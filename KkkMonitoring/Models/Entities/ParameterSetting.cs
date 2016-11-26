@@ -24,8 +24,8 @@ namespace KkkMonitoring.Models.Entities
         [NotMapped]
         public static readonly Dictionary<ParameterType, Type> TypeBinding = new Dictionary<ParameterType, Type>()
         {
-            [ParameterType.tFloat] = typeof(float),
-            [ParameterType.tString] = typeof(string),
+            [ParameterType.tFloat] = typeof(Double),
+            [ParameterType.tString] = typeof(String),
             [ParameterType.tInt] = typeof(Int32),
             [ParameterType.tUint] = typeof(UInt32)
         };
@@ -38,7 +38,6 @@ namespace KkkMonitoring.Models.Entities
         public virtual Guid ParameterId { get; set; }
 
         public virtual string Name { get; set; }
-
         /// <summary>
         /// Тип данных параметра.
         /// </summary>

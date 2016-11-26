@@ -11,9 +11,7 @@ namespace KkkMonitoring.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual Guid ElementId { get; set; }
         public virtual string Name { get; set; }
-        public decimal Longitude { get; set; }
-        public decimal Latitude { get; set; }
-        public ICollection<ParameterValue> ParameterValues { get; set; }
+        public ICollection<ParameterSetting> Parameters { get; set; }
 
     }
 }

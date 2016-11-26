@@ -12,7 +12,9 @@ namespace KkkMonitoring.Models.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual Guid StationId { get; set; }
-
+        public virtual string Name { get; set; }
+        public decimal Longitude { get; set; }
+        public decimal Latitude { get; set; }
         public virtual ICollection<ParameterValue> Parameters { get; set; }
     }
 }

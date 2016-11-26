@@ -27,6 +27,9 @@ namespace KkkMonitoring.Models.Utils
 
         public static bool IsCorrect(string value, Type type)
         {
+            if (value == null)
+                return true;
+
             var converter = TypeDescriptor.GetConverter(type);
             return converter.IsValid(value);
         }

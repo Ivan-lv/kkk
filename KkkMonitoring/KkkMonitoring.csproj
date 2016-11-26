@@ -221,7 +221,9 @@
     <Compile Include="Models\Entities\ParameterSetting.cs" />
     <Compile Include="Models\Entities\ParameterValue.cs" />
     <Compile Include="Models\Entities\Station.cs" />
+    <Compile Include="Models\Models\BaseModel.cs" />
     <Compile Include="Models\Models\Model.cs" />
+    <Compile Include="Models\Models\StationModel.cs" />
     <Compile Include="Models\Utils\TypesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

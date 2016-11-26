@@ -13,16 +13,5 @@ namespace KkkMonitoring.Controllers
 {
     public class ElementsController : ApiController
     {
-        Model model = new Model();
-
-        [HttpGet]
-        public void CreateElement()
-        {
-            model.Elements.Add(new Element()
-            {
-                Latitude = 36,
-            });
-            model.SaveChanges();
-        }
     }
 }
