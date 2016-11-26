@@ -69,7 +69,8 @@ div.page {
     // padding-left: @sidebarWidth;
     height: 100%;
     // width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
   div.activity-panel-wrap {
     @activity-panel-height: 300px;
@@ -128,3 +129,28 @@ div.content-wrap{
   }
 }
 
+#mapContainerEdit {
+    min-height: 250px;
+}
+
+#bs-table-attr{
+    td {
+        border: 1px solid #ddd !important;
+
+        select {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+#bs-toolbox {
+    a{
+        display: inline-block;
+        padding: 0 10px;
+        outline:none;
+    }
+    a:hover {
+        color: #11c1fb;
+    }
+}
