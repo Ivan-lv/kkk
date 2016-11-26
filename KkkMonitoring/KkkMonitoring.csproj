@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebServices</RootNamespace>
-    <AssemblyName>WebServices</AssemblyName>
+    <RootNamespace>KkkMonitoring</RootNamespace>
+    <AssemblyName>KkkMonitoring</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -199,7 +199,9 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -210,7 +212,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\Element.cs" />
+    <Compile Include="Models\Entities\ElementSetting.cs" />
+    <Compile Include="Models\Entities\ParameterSetting.cs" />
+    <Compile Include="Models\Entities\ParameterValue.cs" />
+    <Compile Include="Models\Entities\Station.cs" />
     <Compile Include="Models\Models\Model.cs" />
+    <Compile Include="Models\Utils\TypesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
