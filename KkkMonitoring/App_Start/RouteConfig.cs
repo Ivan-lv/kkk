@@ -14,6 +14,12 @@ namespace KkkMonitoring
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Start",
+                url: "",
+                defaults: new { controller = "Map", Action="Map" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Index", action = "Index", id = UrlParameter.Optional }

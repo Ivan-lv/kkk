@@ -1,0 +1,130 @@
+﻿html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// common page styles
+@headerHeight: 45px;
+@sidebarWidth: 270px;
+
+div.page {
+  position: relative;
+  // overflow: hidden;
+  height: 100%;
+
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: @headerHeight;
+    background-color: red;
+    z-index: 100;
+    width: 100%;
+
+    .icon-circle {
+      background-color: #46b8da;
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+  }
+  div.middle {
+    padding-top: @headerHeight;
+    height: 100%;
+  }
+  div.left-sidebar {
+    position: relative;
+    height: 100%;
+    width: @sidebarWidth;
+    background-color: #fafafa;
+    float: left;
+    border-right: 1px solid #cecece;
+    padding-right: 35px;
+    .sidebar-search-box {
+      width: 100%;
+    }
+    #sidebar-toggle-btn {
+      @sidebar-toggle-btn-size: 24px;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      width: @sidebar-toggle-btn-size;
+      height: @sidebar-toggle-btn-size + 10;
+      font-size: @sidebar-toggle-btn-size;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  div.content-wrap {
+    // padding-left: @sidebarWidth;
+    height: 100%;
+    // width: 100%;
+    overflow: hidden;
+  }
+  div.activity-panel-wrap {
+    @activity-panel-height: 300px;
+    @activity-panel-toggle-btn-height: 20px;
+    font-size: 16px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    .activity-panel-toggle-btn {
+      margin: auto;
+      width: 15%;
+      min-width: 50px;
+      max-width: 80px;
+      height: @activity-panel-toggle-btn-height;
+      background-color: #e7e7e7;
+      text-align: center;
+      padding: 3px 0;
+      font-size: .7em;
+      border-top: 1px solid #cccccc;
+      border-left: 1px solid #cccccc;
+      border-right: 1px solid #cccccc;
+      border-radius: 7px 7px 0 0 ;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .activity-panel-body {
+      width: 100%;
+      height: @activity-panel-height;
+      display: none;
+      background-color: #fafafa;
+      border-top: 1px solid #cccccc
+    }
+  }
+}
+
+// map styles
+#map-wrap{
+  width: 100%;
+  height: 100%;
+}
+
+//monitoring
+div.content-wrap{
+  padding: 4px;
+  .parameter-wrap{
+    margin-bottom: 8px;
+    &.good{
+      color: green;
+    }
+    &.bad{
+      color: red;
+    }
+  }
+}
+

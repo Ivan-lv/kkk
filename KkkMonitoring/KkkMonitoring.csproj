@@ -195,10 +195,13 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Site.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.4.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\page-scripts\common.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +209,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ElementsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,7 +227,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\jquery-2.2.4.min.map" />
+    <Content Include="Views\MasterPages\KkkMasterPage.cshtml" />
+    <Content Include="Views\Map\Map.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,6 +240,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Resourses\" />
+    <Folder Include="Scripts\libs\" />
+    <Folder Include="Scripts\modules\" />
+    <Folder Include="Views\Stations\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
