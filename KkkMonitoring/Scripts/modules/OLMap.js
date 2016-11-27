@@ -476,7 +476,7 @@
             return widgetOverlay;
         }
     };
-
+    
     var _map = null;
     var _mapTargetHtmlElem = undefined;
     var _mapLayers = {
@@ -500,11 +500,12 @@
             style: mapObjectFactory.getLineStyleFunc,
             updateWhileAnimating: true
         })
+        
     };
     var _defaultMinZoom = 3;
     var _view = new ol.View({
-        zoom: _defaultMinZoom,
-        minZoom: _defaultMinZoom,
+        zoom: 2,
+//        minZoom: _defaultMinZoom,
         center: [300000, -50000]
     });
     var _customMapControls = {
@@ -634,6 +635,13 @@
                 feature.get("lineFeature").set('hidden', true);
             });
         });
+
+        _map.addOverlay(new ol.Overlay({
+            id: "marker",
+            element: _getMarkerElement(),
+            positioning: "bottom-center",
+            position: undefined
+        }));
     }
 
     function _hoverPointer(event) {
@@ -865,6 +873,12 @@
     }
 
 
+    function _getMarkerElement() {
+        var $span = $("<span style='font-size: 32px'></span>");
+        $span.addClass("glyphicon glyphicon-map-marker");
+        return $span[0];
+    }
+
     /**
      *
      * @param targetObject - maybe a ol.extent or ol.geometery
@@ -889,9 +903,9 @@
             maxZoom: options.maxZoom || 11
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             updateLinesCoordinates()
-        },1000)
+        }, 1000);
     }
 
     function positioningMapForVisibleStations() {
@@ -990,6 +1004,20 @@
         _map.render();
     }
 
+    function showMarker(coords) {
+        _map.getOverlayById("marker").setPosition(coords);
+    }
+
+    function getLonLatByPxCoord(pxCoord, markerVisibility) {
+        var projectedCoords = _map.getCoordinateFromPixel(pxCoord);
+        if (markerVisibility) {
+            showMarker(projectedCoords);
+        }
+
+        return ol.proj.toLonLat(projectedCoords);
+
+    }
+
     return {
         initMap: initMap,
         showStations: showStations,
@@ -1001,7 +1029,8 @@
         updateSize: updateMapSize,
         getStationsWidgetCoordsById: getStationsWidgetCoordsById,
         positioningMapForVisibleStations: positioningMapForVisibleStations,
-        reRenderMap: reRenderMap
+        reRenderMap: reRenderMap,
+        getLonLatByPxCoord: getLonLatByPxCoord
     };
 
 })(jQuery);

@@ -20,8 +20,7 @@
         {
             field: "type",
             title: "Тип",
-            formatter: attrTypeColFormatter,
-            cellStyle: attrTypeCellStyle
+            formatter: attrTypeColFormatter
         }
     ];
 
@@ -54,7 +53,15 @@
         $("#addBtn").on("click", onClickAddAttrBtn);
         $("#editBtn").on("click", onClickEditAttrBtn);
         $("#removeBtn").on("click", onClickRemoveAttrBtn);
+
+        $("#mapContainerEdit").on("click", onClickByMap);
     });
+
+    function onClickByMap(e) {
+        var lonlat = OLMap.getLonLatByPxCoord([e.offsetX, e.offsetY], true);
+        $("#longitudeVal").val(lonlat[1]);
+        $("#latitudeVal").val(lonlat[0]);
+    }
 
     function onClickAddAttrBtn() {
         clearAttrModal();
@@ -128,7 +135,7 @@
             //            select.val(value);
             return attrTypeNames[value];
         } else {
-            return "нет такого!"
+            return "нет такого!";
         }
 
 //        return select[0].outerHTML;
