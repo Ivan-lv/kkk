@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace KkkMonitoring.Controllers
 {
+    [Authorize]
     public class MapController : Controller
     {
         // GET: Map

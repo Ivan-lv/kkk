@@ -14,8 +14,9 @@ namespace KkkMonitoring
     {
         public void Configuration(IAppBuilder app)
         {
-            app.CreatePerOwinContext(AutorizationModel.Create);
-            app.CreatePerOwinContext<AutorizationManager>(AutorizationManager.Create);
+            app.CreatePerOwinContext(ApplicationUserModel.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // Включение использования файла cookie, в котором приложение может хранить информацию для пользователя, выполнившего вход,
             // и использование файла cookie для временного хранения информации о входах пользователя с помощью стороннего поставщика входа
@@ -23,17 +24,17 @@ namespace KkkMonitoring
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Login"),
+                LoginPath = new PathString("/Login/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Позволяет приложению проверять метку безопасности при входе пользователя.
                     // Эта функция безопасности используется, когда вы меняете пароль или добавляете внешнее имя входа в свою учетную запись.  
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<AutorizationManager, User>(
-                        validateInterval: TimeSpan.FromMinutes(30),
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, User>(
+                        validateInterval: TimeSpan.FromMinutes(60 * 6),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
             });
-            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ApplicationCookie);
         }
     }
 }

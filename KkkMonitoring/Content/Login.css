@@ -1,0 +1,38 @@
+﻿html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+div.page div.logo {
+  padding: 8px;
+}
+div.page div.logo span.logo-text {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: xx-large;
+}
+.vertical-align {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+div.content-wrap .vertical-align {
+  display: flex;
+  align-items: center;
+}
+div.content-wrap div.login-wrapper div#error {
+  height: 60px;
+}
+div.content-wrap div.login-wrapper div.user-data {
+  margin-bottom: 6px;
+}
+div.content-wrap div.login-wrapper .btn.login-btn {
+  width: 100%;
+  margin-bottom: 6px;
+}
