@@ -11,7 +11,7 @@ namespace KkkMonitoring.Controllers
         // GET: Stations
         public ActionResult Index()
         {
-            return View();
+            return View("Stations");
         }
     }
 }
