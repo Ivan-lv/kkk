@@ -15,8 +15,8 @@ namespace KkkMonitoring
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //Database.SetInitializer(new DropCreateDatabaseAlways<StationModel>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<AutorizationModel>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationUserModel>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StationModel>());
         }
     }
 }

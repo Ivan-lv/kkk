@@ -14,7 +14,7 @@ namespace KkkMonitoring.Models.Models
 {
     public class ApplicationUserModel : IdentityDbContext<User>
     {
-        public ApplicationUserModel() : base("ConnStr")
+        public ApplicationUserModel() : base("RightsConnStr")
         {
         }
 

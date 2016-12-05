@@ -237,6 +237,9 @@
     </Content>
     <Content Include="Content\ol.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -270,8 +273,10 @@
     <Content Include="Scripts\modules\OLMap.js" />
     <Content Include="Scripts\modules\sound-notifications.js" />
     <Content Include="Scripts\modules\treeViewModule.js" />
+    <Content Include="Scripts\modules\waitingDialog.js" />
     <Content Include="Scripts\page-scripts\signUp.js" />
     <Content Include="Scripts\page-scripts\stationFormEdit.js" />
+    <Content Include="Scripts\page-scripts\stationFormList.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -296,8 +301,9 @@
     <Compile Include="Models\Entities\Station.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="App_Start\ApplicationUserManager.cs" />
-    <Compile Include="Models\Models\AutorizationModel.cs" />
+    <Compile Include="Models\Models\ApplicationUserModel.cs" />
     <Compile Include="Models\Models\BaseModel.cs" />
+    <Compile Include="Models\Models\GeneralModel.cs" />
     <Compile Include="Models\Models\Model.cs" />
     <Compile Include="Models\Models\StationModel.cs" />
     <Compile Include="Models\Utils\TypesHelper.cs" />
@@ -316,10 +322,11 @@
     <Content Include="Scripts\jquery-2.2.4.min.map" />
     <Content Include="Views\MasterPages\KkkMasterPage.cshtml" />
     <Content Include="Views\Map\Map.cshtml" />
-    <Content Include="Views\Stations\Stations.cshtml" />
+    <Content Include="Views\Stations\StationCreateEdit.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\MasterPages\LoginMasterPage.cshtml" />
+    <Content Include="Views\Stations\StationList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -333,6 +340,7 @@
     <Folder Include="Resourses\" />
     <Folder Include="Scripts\libs\bootstrap-table\extensions\" />
     <Folder Include="Scripts\libs\bootstrap-table\locale\" />
+    <Folder Include="Views\ViewModel\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

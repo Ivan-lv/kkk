@@ -1,5 +1,6 @@
 ﻿(function ($) {
 
+    //TODO: передавать данные с сервера
     var attrTypeNames = {
         tString: "Строка",
         tFloat: "Число с плавающей запятой",
@@ -11,7 +12,10 @@
     var bsTableCols = [
         {
             checkbox: true
-
+        },
+        {
+            field: "id",
+            visible: false
         },
         {
             field: "name",
@@ -21,25 +25,39 @@
             field: "type",
             title: "Тип",
             formatter: attrTypeColFormatter
-        }
-    ];
-
-    var testData = [
-        {
-            name: "11",
-            type: "tInt"
         },
         {
-            name: "21",
-            type: "tBool"
+            field: "isEdited",
+            visible: false
         }
     ];
 
     var attrTable = undefined;
+    var nameInput = undefined;
+    var latInput = undefined;
+    var longInput = undefined;
+    var stationId = undefined;
 
-    $(function() {
-        OLMap.initMap({ target: "mapContainerEdit" });
+    $(function () {
+
+        nameInput = $("#stationName");
+        latInput = $("#latitudeVal");
+        longInput = $("#longitudeVal");
         attrTable = $("#bs-table-attr");
+
+        OLMap.initMap({ target: "mapContainerEdit" });
+
+        var data = $("#station-data").val();
+        var paramData = [];
+        if (data) {
+            var station = JSON.parse(data);
+            stationId = station.id,
+            nameInput.val(station.name);
+            latInput.val(station.latitude);
+            longInput.val(station.longitude);
+            paramData = station.parameters;
+        }
+
         attrTable.bootstrapTable({
             search: true,
             pagination: true,
@@ -47,8 +65,10 @@
             toolbar: "#bs-toolbox",
             sortable: true,
             columns: bsTableCols,
-            data: testData
+            data: paramData
         });
+
+        $("#saveBtn").on("click", submitForm);
 
         $("#addBtn").on("click", onClickAddAttrBtn);
         $("#editBtn").on("click", onClickEditAttrBtn);
@@ -121,6 +141,47 @@
         /* todo: ajax here */
     }
 
+    //TODO: сделать что-нибудь, чтобы передавать url, и данные модели
+    function submitForm() {
+        var parameters = attrTable.bootstrapTable("getData");
+
+        var name = nameInput.val();
+        var long = longInput.val();
+        var lat = latInput.val();
+        var paramToServ = $.map(parameters, function (element) {
+            if (element.isEdited) {
+                var tuple = { Item1: element.id, Item2: element.type, Item3: element.name }
+                return tuple;
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            dataType: "json",
+            url: "/Stations/CreateEdit",
+            beforeSend: function () {
+                waitingDialog.show("Идет сохранение...");
+            },
+            data: {
+                primarykey: stationId,
+                name: name,
+                longitude: parseFloat(long).toFixed(2).replace(/\./g, ','),
+                latitude: parseFloat(lat).toFixed(2).replace(/\./g, ','),
+                parametersJson: JSON.stringify(paramToServ)
+            },
+            cache: false,
+            error: function (e) {
+                waitingDialog.hide();
+                console.log(e);
+            },
+            success: function () {
+                waitingDialog.hide();
+                window.location.href = "/Stations";
+            }
+        });
+    }
+
     function attrTypeColFormatter(value, row, index) {
 
 //        var select = $("<select></select>");
@@ -156,7 +217,8 @@
     function getValuesFromAttrModal() {
         return {
             name: $("#attrName-modal").val() || "",
-            type: $("#attrType-modal").val() || ""
+            type: $("#attrType-modal").val() || "",
+            isEdited: true
         }
     }
 

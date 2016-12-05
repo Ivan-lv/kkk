@@ -15,7 +15,8 @@ namespace KkkMonitoring.Models.Entities
             tString,
             tFloat,
             tInt,
-            tUint
+            tUint,
+            tBool
         }
 
         /// <summary>
@@ -27,7 +28,8 @@ namespace KkkMonitoring.Models.Entities
             [ParameterType.tFloat] = typeof(Double),
             [ParameterType.tString] = typeof(String),
             [ParameterType.tInt] = typeof(Int32),
-            [ParameterType.tUint] = typeof(UInt32)
+            [ParameterType.tUint] = typeof(UInt32),
+            [ParameterType.tBool] = typeof(Boolean)
         };
 
         /// <summary>
@@ -37,10 +39,13 @@ namespace KkkMonitoring.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual Guid ParameterId { get; set; }
 
+        [Required]
         public virtual string Name { get; set; }
+
         /// <summary>
         /// Тип данных параметра.
         /// </summary>
+        [Required]
         public virtual ParameterType DataType { get; set; }
     }
 }
