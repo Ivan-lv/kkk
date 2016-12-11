@@ -302,7 +302,6 @@
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="App_Start\ApplicationUserManager.cs" />
     <Compile Include="Models\Models\ApplicationUserModel.cs" />
-    <Compile Include="Models\Models\BaseModel.cs" />
     <Compile Include="Models\Models\GeneralModel.cs" />
     <Compile Include="Models\Models\Model.cs" />
     <Compile Include="Models\Models\StationModel.cs" />
