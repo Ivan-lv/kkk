@@ -73,5 +73,22 @@ namespace KkkMonitoring.Controllers
 
             return view;
         }
+
+        [HttpPost]
+        public string GetStations()
+        {
+            StationModel model = new StationModel();
+            var stationsToMap = model.Stations.ToArray().Select(x => new
+            {
+                id = x.StationId,
+                text = x.Name,
+                latitude = x.Latitude,
+                longitude = x.Longitude,
+                state = (new Random().Next() % 2 == 0) ? "STOPPED" : "STARTED" //TODO: убрать иммитацию
+            }).ToArray();
+            var jsonStations = JsonConvert.SerializeObject(stationsToMap);
+
+            return jsonStations;
+        }
     }
 }
