@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using KkkMonitoring.Models.Entities;
 using KkkMonitoring.Models.Models;
 using Newtonsoft.Json;
+using WebGrease.Css.Extensions;
 
 namespace KkkMonitoring.Controllers
 {
@@ -89,6 +90,37 @@ namespace KkkMonitoring.Controllers
             var jsonStations = JsonConvert.SerializeObject(stationsToMap);
 
             return jsonStations;
+        }
+
+        [HttpGet]
+        public string GetStationStructure(string id)
+        {
+            StationModel model = new StationModel();
+            Guid guid = Guid.Parse(id);
+
+            var stationStructure = model.Stations.Where(x => x.StationId == guid).Select(x => new
+            {
+                parameters = x.Parameters.Select(param => new
+                {
+                    param.Setting.Name,
+                    param.Setting.DataType,
+                    param.ParameterId
+                }),
+                //TODO: добавить параметры типовых элементов установки
+            }).First();
+
+            var structForJson = new
+            {
+                parameters = stationStructure.parameters.Select(x => new
+                {
+                    datatype = x.DataType.ToString(),
+                    name = x.Name,
+                    parameterId = x.ParameterId
+                })
+            };
+            
+
+            return JsonConvert.SerializeObject(structForJson);
         }
     }
 }
