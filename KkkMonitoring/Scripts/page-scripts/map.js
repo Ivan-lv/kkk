@@ -11,8 +11,8 @@
         {
             "id": "583b3af25f8bb9a573eae7a1",
             "text": "скв - 123",
-            "latitude": "-78.073955",
-            "longitude": "106.039044",
+            "latitude": "57.99658416302816",
+            "longitude": "56.24791468759818",
             "state": "STOPPED"
         },
         {
@@ -46,13 +46,20 @@
     ];
 
 
-    $(function() {
-        /*init tree*/
-        TreeViewModule.setDataSource(data);
+    $(function () {
+        $.ajax({
+            url: "/Stations/GetStations",
+            type: "post",
+            dataType: "json"
+        }).done(function(response) {
+            /*init tree*/
+            TreeViewModule.setDataSource(response);
 
+            /*init map*/
+            OLMap.initMap({ target: "Map", stations: response });
+        });
 
-        /*init map*/
-        OLMap.initMap({target: "Map"});
+        
 
     });
 
