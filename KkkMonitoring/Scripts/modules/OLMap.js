@@ -832,15 +832,15 @@
     function _unsetStationVisualObj(stationVisObj) {
         if (stationVisObj.lineFeature) {
             _mapLayers.lineLayer.getSource().removeFeature(stationVisObj.lineFeature);
-            stationVisObj.lineFeature.setProperties({})
+            stationVisObj.lineFeature.setProperties({});
         }
         if (stationVisObj.iconFeature) {
             _mapLayers.iconClusterLayer.getSource().getSource().removeFeature(stationVisObj.iconFeature);
-            stationVisObj.iconFeature.setProperties({})
+            stationVisObj.iconFeature.setProperties({});
         }
         if (stationVisObj.widgetOverlay) {
             _map.removeOverlay(stationVisObj.widgetOverlay);
-            stationVisObj.widgetOverlay.setProperties({})
+            stationVisObj.widgetOverlay.setProperties({});
         }
     }
 

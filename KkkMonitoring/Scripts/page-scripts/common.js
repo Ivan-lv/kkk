@@ -34,8 +34,8 @@ var gso = {}; // global scoped object
   }
 
   function updateMapSize() {
-    if (gso.map) {
-      gso.map.updateSize();
+    if (OLMap && OLMap.updateSize) {
+        OLMap.updateSize();
     }
 
   }

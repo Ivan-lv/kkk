@@ -193,6 +193,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jsTree\themes\default-dark\32px.png" />
+    <Content Include="Content\jsTree\themes\default-dark\40px.png" />
+    <Content Include="Content\jsTree\themes\default-dark\style.css" />
+    <Content Include="Content\jsTree\themes\default-dark\style.min.css" />
+    <Content Include="Content\jsTree\themes\default-dark\throbber.gif" />
+    <Content Include="Content\jsTree\themes\default\32px.png" />
+    <Content Include="Content\jsTree\themes\default\40px.png" />
+    <Content Include="Content\jsTree\themes\default\style.css" />
+    <Content Include="Content\jsTree\themes\default\style.min.css" />
+    <Content Include="Content\jsTree\themes\default\throbber.gif" />
     <Content Include="Content\ol.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -216,6 +226,7 @@
     <Content Include="Scripts\libs\bootstrap-table\bootstrap-table-locale-all.min.js" />
     <Content Include="Scripts\libs\bootstrap-table\bootstrap-table.js" />
     <Content Include="Scripts\libs\bootstrap-table\bootstrap-table.min.js" />
+    <Content Include="Scripts\libs\jsTree\jstree.min.js" />
     <Content Include="Scripts\libs\openlayers3\ol3.js" />
     <Content Include="Scripts\libs\pubsub.js" />
     <Content Include="Scripts\libs\throttle-debounce.js" />
@@ -223,6 +234,7 @@
     <Content Include="Scripts\modules\OLMap.js" />
     <Content Include="Scripts\modules\sound-notifications.js" />
     <Content Include="Scripts\modules\treeViewModule.js" />
+    <Content Include="Scripts\page-scripts\map.js" />
     <Content Include="Scripts\page-scripts\stationFormEdit.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

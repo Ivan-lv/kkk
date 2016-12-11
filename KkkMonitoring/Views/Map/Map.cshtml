@@ -4,6 +4,29 @@
     ViewBag.Title = "Map page";
 }
 
+@section scriptsArea
+{
+    <script src="~/Scripts/libs/openlayers3/ol3.js"></script>
+    <script src="~/Scripts/libs/jsTree/jstree.min.js"></script>
+    <script src="~/Scripts/modules/OLMap.js"></script>
+    <script src="~/Scripts/modules/TreeViewModule.js"></script>
+    <script src="~/Scripts/page-scripts/map.js"></script>
+}
+
+@section cssArea
+{
+    <link href="~/Content/jsTree/themes/default-dark/style.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/ol.css" rel="stylesheet" type="text/css" />
+}
+
 @section contentArea {
-    <div id="Map">This is the map!</div>
+    <div id="map-wrap">
+        <div id="Map"></div>    
+    </div>
+    
+}
+
+@section sidebarArea
+{
+    <div id="treeView"></div>
 }

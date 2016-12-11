@@ -6,7 +6,7 @@
 
     $(function () {
         _i18nCache = {
-            tooltip: $.i18n.prop('zoom_to_station') || ""
+            tooltip: 'zoom_to_station' || ""
         };
     });
     var span = document.createElement('SPAN');
@@ -56,7 +56,7 @@ var TreeViewModule = (function () {
             },
             data: []
         },
-        plugins: ['checkbox', 'wholerow', 'types', 'search', 'fitMapToIconBtn'],
+        plugins: ['checkbox', 'wholerow', 'search', 'fitMapToIconBtn'],
         checkbox: {
             tie_selection: false,
             whole_node: false
@@ -66,7 +66,7 @@ var TreeViewModule = (function () {
             show_only_matches_children: true
         },
         fitMapToIconBtn: {
-            iconName: "fa fa-map-marker",
+            iconName: "glyphicon glyphicon-screenshot",
             click: _onClickToNodeRightBtn
         },
         types: {
@@ -128,7 +128,7 @@ var TreeViewModule = (function () {
         } else {
             type = NODE_TYPE_NAMES['well'];
             node.a_attr = {
-                'href': '#/scheme/well/',
+//                'href': '#/scheme/well/',
                 'data-stationstate': node.state
             };
         }
@@ -139,7 +139,7 @@ var TreeViewModule = (function () {
         }
         node.children = node.countries || node.oilfields || node.clusters || node.wells || [];
 
-        $.map(node.children, _walkForTree)
+        $.map(node.children, _walkForTree);
     }
 
     function _onSelectNode(event, data) {
@@ -237,13 +237,14 @@ var TreeViewModule = (function () {
 
     function setDataSource(dataSource) {
         var defer = $.Deferred();
-        var convertedData = _convertData(dataSource);
-        if (!convertedData) {
-            /* todo: error message ?? */
-            return;
-        }
+//        var convertedData = _convertData(dataSource); - old function
+//        var convertedData = _convertData(dataSource);
+//        if (!convertedData) {
+//            /* todo: error message ?? */
+//            return;
+//        }
 
-        _jsTreeInstance.settings.core.data = convertedData;
+        _jsTreeInstance.settings.core.data = dataSource;
         _jsTree.jstree('refresh')
             .bind('refresh.jstree', _onLoadTree)
             .bind('refresh.jstree', function () {
