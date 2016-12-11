@@ -9,24 +9,52 @@
     <script src="~/Scripts/libs/openlayers3/ol3.js"></script>
     <script src="~/Scripts/libs/jsTree/jstree.min.js"></script>
     <script src="~/Scripts/modules/OLMap.js"></script>
+    <script src="~/Scripts/modules/Sidebar.js"></script>
+    <script src="~/Scripts/modules/StationCard.js"></script>
     <script src="~/Scripts/modules/TreeViewModule.js"></script>
     <script src="~/Scripts/page-scripts/map.js"></script>
 }
 
 @section cssArea
 {
-    <link href="~/Content/jsTree/themes/default-dark/style.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/jsTree/themes/proton/style.min.css" rel="stylesheet" type="text/css"/>
     <link href="~/Content/ol.css" rel="stylesheet" type="text/css" />
 }
 
 @section contentArea {
+    <div id="Sidebar-left">
+        <div class="sidebar-left-inner">
+            <div>Станции</div>
+            <div id="treeView"></div>
+            <div id="station-card-container">
+                <div class="station-card-container-inner">
+
+                    <h4><span class="glyphicon glyphicon-triangle-left"></span> <span class="stationName"></span></h4>
+                    <div class="card-content">
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Параметры</div>
+                            <!-- Table -->
+                            <table class="table parameters">
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">1</td>
+                                        <td>Mark</td>
+                                    </tr>
+                                    <tr> <td scope="row">2</td> <td>Jacob</td> </tr>
+                                    <tr> <td scope="row">3</td> <td>Larry</td> </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="sidebar-btn-toggle"></div>
+        </div>
+    </div>
     <div id="map-wrap">
         <div id="Map"></div>    
     </div>
     
-}
-
-@section sidebarArea
-{
-    <div id="treeView"></div>
 }
