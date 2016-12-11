@@ -1,0 +1,76 @@
+﻿@using WebGrease.Css.Extensions
+@model KkkMonitoring.Models.Entities.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/MasterPages/LoginMasterPage.cshtml";
+
+    var errors = new string[] {};
+    if (ViewData["errors"] != null)
+    {
+        errors = (string[]) ViewData["errors"];
+    }
+}
+
+@section contentArea
+{
+    <div class="content-wrap">
+        <div class="login-wrapper container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="row form-group">
+                        @using (Html.BeginForm("Registration", "Login"))
+                        {
+                            <div class="row">
+                                <div class="col-md-12" id="error">
+                                    @foreach (var error in errors)
+                                    {
+                                        <div>@error</div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 user-data" id="username">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @id = "usernameInput", @placeholder = "ФИО" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 user-data" id="email">
+                                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control", @id = "emailInput", @placeholder = "Электронная почта"})
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 user-data" id="password">
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", @id = "passwordInput", @placeholder = "Пароль" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 user-data" id="confirmPassword">
+                                    <input class="form-control" type="Password" id="passwordConfirmInput" placeholder="Подтверждение пароля"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success login-btn" type="submit">Регистрация</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section cssArea
+{
+    <link href="~/Content/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
+}
+
+@section scriptsArea
+{
+    <script src="~/Scripts/libs/bootstrap-table/bootstrap-table.js"></script>
+    <script src="~/Scripts/libs/bootstrap-table/bootstrap-table-locale-all.min.js"></script>
+}

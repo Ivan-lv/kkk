@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Stations";
+    Layout = "~/Views/MasterPages/KkkMasterPage.cshtml";
+}
+
+@section contentArea
+{
+    <input id="stations-data" value="@ViewData["Stations"]" hidden/>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="bs-toolbox">
+                    <button id="addBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                    <button id="editBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button id="removeBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <table id="bs-table-stations" class="table table-bordered"></table>
+            </div>
+        </div>
+    </div>
+}
+
+@section cssArea
+{
+    <link href="~/Content/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ol.css" rel="stylesheet" type="text/css" />
+}
+
+@section scriptsArea
+{
+    <script src="~/Scripts/libs/bootstrap-table/bootstrap-table.js"></script>
+    <script src="~/Scripts/libs/bootstrap-table/bootstrap-table-locale-all.min.js"></script>
+    <script src="~/Scripts/page-scripts/stationFormList.js"></script>
+}

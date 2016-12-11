@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Stations";
+    Layout = "~/Views/MasterPages/KkkMasterPage.cshtml";
+}
+
+@section contentArea
+{
+    <input id="station-data" value="@ViewData["Station"]"/>
+    <div class="container-fluid with-affix">
+        <div data-spy="affix-top" class="action-panel affix">
+            <button class="btn btn-primary" id="saveBtn" type="submit">Сохранить</button>
+            <button class="btn btn-primary" id="cancelBtn">Отмена</button>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Наименование</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col">
+                <div class="form-group">
+                    @*<label for="stationName">Наименование</label>*@
+                    <input class="form-control" id="stationName" placeholder="Наименование">
+                </div>
+            </div>
+        </div>
+        @* lonlat *@
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Местоположение</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 ">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="longitudeVal">Широта</label>
+                        <input type="text" class="form-control" id="longitudeVal" placeholder="">
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="latitudeVal">Долгота</label>
+                        <input type="text" class="form-control" id="latitudeVal" placeholder="">
+                    </div>
+                </div>
+            </div>
+            @* map *@
+            <div class="col-xs-12 col-sm-8 col-md-8 ">
+                <div id="mapContainerEdit"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Параметры</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="bs-toolbox">
+                    <button id="addBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus"></span></button>
+                    <button id="editBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-pencil"></span></button>
+                    <button id="removeBtn" class="btn btn-default">
+                        <span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <table id="bs-table-attr" class="table table-bordered"></table>
+            </div>
+        </div>
+    </div>
+
+    <div id="tableRowView" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="attrName-modal" class="col-sm-2 control-label">Наименование</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="attrName-modal" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="attrType-modal" class="col-sm-2 control-label">Тип</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="attrType-modal">
+                                    <option value="tString">Строка</option>
+                                    <option value="tFloat">Число с плавающей запятой</option>
+                                    <option value="tInt">Целое</option>
+                                    <option value="tUint">Целое положительное</option>
+                                    <option value="tBool">Логический</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="attrModal-cancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button id="attrModal-successBtn" type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Подтвердите действие</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="confirmModal-cancelBtn" type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    <button id="confirmModal-successBtn" type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section cssArea
+{
+    <link href="~/Content/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/ol.css" rel="stylesheet" type="text/css"/>
+}
+
+@section scriptsArea
+{
+    <script src="~/Scripts/libs/bootstrap-table/bootstrap-table.js"></script>
+    <script src="~/Scripts/libs/bootstrap-table/bootstrap-table-locale-all.min.js"></script>
+    <script src="~/Scripts/libs/openlayers3/ol3.js"></script>
+    <script src="~/Scripts/modules/OLMap.js"></script>
+    <script src="~/Scripts/page-scripts/stationFormEdit.js"></script>
+    <script src="~/Scripts/modules/waitingDialog.js"></script>
+}

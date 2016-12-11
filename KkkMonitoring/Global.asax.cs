@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
+using KkkMonitoring.Models.Models;
 
 namespace KkkMonitoring
 {
@@ -13,6 +15,8 @@ namespace KkkMonitoring
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationUserModel>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StationModel>());
         }
     }
 }

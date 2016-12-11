@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Content/Login.css",
+    "inputFile": "Content/Login.less"
+  },
+  {
+    "outputFile": "Content/Site.css",
+    "inputFile": "Content/Site.less"
+  }
+]

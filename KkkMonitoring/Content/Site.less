@@ -65,12 +65,24 @@ div.page {
       }
     }
   }
+  div.action-panel {
+      &.affix {
+        top: @headerHeight + 10;
+        width: 100%;
+        z-index: 999;
+      }
+  }
+
   div.content-wrap {
     // padding-left: @sidebarWidth;
     height: 100%;
     // width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+
+    .with-affix {
+        margin-top: 60px;
+    }
   }
   div.activity-panel-wrap {
     @activity-panel-height: 300px;
