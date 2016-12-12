@@ -50,12 +50,12 @@
             </nav>
         </header>
         <div class="middle">
-            <div class="left-sidebar">
-                <div id="sidebar-toggle-btn">
-                    <span class="glyphicon glyphicon-menu-hamburger"></span>
-                </div>
-                @RenderSection("sidebarArea", false)
-            </div>
+@*            <div class="left-sidebar">*@
+@*                <div id="sidebar-toggle-btn">*@
+@*                    <span class="glyphicon glyphicon-menu-hamburger"></span>*@
+@*                </div>*@
+@*                @RenderSection("sidebarArea", false)*@
+@*            </div>*@
             <div class="content-wrap">
                 @RenderSection("contentArea", false)
             </div>
@@ -75,6 +75,7 @@
     <script src="~/Scripts/libs/throttle-debounce.js"></script>
     <script src="~/Scripts/libs/pubsub.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/modules/API.js"></script>
     @RenderSection("scriptsArea", false)
 </body>
 </html>

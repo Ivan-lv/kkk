@@ -247,6 +247,14 @@
     <Content Include="Content\jsTree\themes\default\style.css" />
     <Content Include="Content\jsTree\themes\default\style.min.css" />
     <Content Include="Content\jsTree\themes\default\throbber.gif" />
+    <Content Include="Content\jsTree\themes\proton\30px.png" />
+    <Content Include="Content\jsTree\themes\proton\32px.png" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-bold-webfont.svg" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-extralight-webfont.svg" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-regular-webfont.svg" />
+    <Content Include="Content\jsTree\themes\proton\style.css" />
+    <Content Include="Content\jsTree\themes\proton\style.min.css" />
+    <Content Include="Content\jsTree\themes\proton\throbber.gif" />
     <Content Include="Content\Login.css">
       <DependentUpon>Login.less</DependentUpon>
     </Content>
@@ -276,6 +284,15 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-bold-webfont.eot" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-bold-webfont.ttf" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-bold-webfont.woff" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-extralight-webfont.eot" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-extralight-webfont.ttf" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-extralight-webfont.woff" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-regular-webfont.eot" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-regular-webfont.ttf" />
+    <Content Include="Content\jsTree\themes\proton\fonts\titillium\titilliumweb-regular-webfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
@@ -291,8 +308,11 @@
     <Content Include="Scripts\libs\pubsub.js" />
     <Content Include="Scripts\libs\throttle-debounce.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modules\API.js" />
     <Content Include="Scripts\modules\OLMap.js" />
+    <Content Include="Scripts\modules\Sidebar.js" />
     <Content Include="Scripts\modules\sound-notifications.js" />
+    <Content Include="Scripts\modules\StationCard.js" />
     <Content Include="Scripts\modules\treeViewModule.js" />
     <Content Include="Scripts\modules\waitingDialog.js" />
     <Content Include="Scripts\page-scripts\parameterSocket.js" />

@@ -50,8 +50,8 @@ var TreeViewModule = (function () {
     var _defaultTreeOpt = {
         core: {
             themes: {
-                theme: 'default',
-                icon: false,
+                theme: 'proton',
+                icon: true,
                 dots: false
             },
             data: []
@@ -77,7 +77,9 @@ var TreeViewModule = (function () {
             'WELL': {}
         }
     };
-
+    var callbacks = {
+        onSelect: undefined
+}
     $(function () {
         _initTree();
         $('#search-input').keyup(_searchInTree);
@@ -143,12 +145,11 @@ var TreeViewModule = (function () {
     }
 
     function _onSelectNode(event, data) {
-        if (data.node.type === NODE_TYPE_NAMES['well']) {
-            window.location.hash = data.node["a_attr"].href;
-            $.publish('tree:stationSelected', [data.node.original.realId]);
-        }
 
-        $.publish('tree:nodeSelected', data.node.original);
+        if (callbacks.onSelect && typeof callbacks.onSelect === "function") {
+            callbacks.onSelect(data.node.original);
+        }
+        
     }
 
     function _onCheckNode(event, data) {
@@ -364,6 +365,16 @@ var TreeViewModule = (function () {
         _jsTree.removeClass('disablePanBtn');
     }
 
+    function setCallback(callbackName, callback, context) {
+        if (!callbacks.hasOwnProperty(callbackName) || typeof callback !== "function") {
+            return;
+        }
+        callbacks[callbackName] = callback;
+        if (context) {
+            callbacks[callbackName].bind(context);
+        }
+    }
+
     /* export methods */
     return {
         getSelectedNodes: getSelectedNodes,
@@ -380,7 +391,8 @@ var TreeViewModule = (function () {
         selectStationNodeById: selectStationNodeById,
         changeStationState: changeStationState,
         hidePanMapBtns: hidePanMapBtns,
-        showPanMapBtns: showPanMapBtns
+        showPanMapBtns: showPanMapBtns,
+        setCallback: setCallback
     };
 
 })();
