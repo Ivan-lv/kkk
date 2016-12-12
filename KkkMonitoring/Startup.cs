@@ -5,6 +5,8 @@ using KkkMonitoring.Models.Entities;
 using KkkMonitoring.Models.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.Owin.Security.Cookies;
 
 [assembly: OwinStartupAttribute(typeof(KkkMonitoring.Startup))]
@@ -35,6 +37,14 @@ namespace KkkMonitoring
                 }
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ApplicationCookie);
+
+            var hubConfiguration = new HubConfiguration();
+            hubConfiguration.EnableDetailedErrors = true;
+            hubConfiguration.EnableJavaScriptProxies = true;
+            app.MapSignalR("/signalr", hubConfiguration);
+            var idProvider = new PrincipalUserIdProvider();
+            GlobalHost.DependencyResolver.Register(typeof(IUserIdProvider), () => idProvider);
+            //GlobalHost.DependencyResolver.Register(typeof(IUserIdProvider), () => new ApplicationUserModel());
         }
     }
 }

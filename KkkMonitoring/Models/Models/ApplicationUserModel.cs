@@ -9,10 +9,11 @@ using System.Web;
 using KkkMonitoring.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.SignalR;
 
 namespace KkkMonitoring.Models.Models
 {
-    public class ApplicationUserModel : IdentityDbContext<User>
+    public class ApplicationUserModel : IdentityDbContext<User>, IUserIdProvider
     {
         public ApplicationUserModel() : base("RightsConnStr")
         {
@@ -34,6 +35,13 @@ namespace KkkMonitoring.Models.Models
         {
             //TODO: Запилить свою валидацию (email уникальный, Username - нет) 
             return base.ValidateEntity(entityEntry, items);
+        }
+
+
+        public string GetUserId(IRequest request)
+        {
+            //TODO: Нахер не нужно
+            return request.User.Identity.Name;
         }
     }
 }

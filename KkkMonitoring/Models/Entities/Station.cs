@@ -23,5 +23,17 @@ namespace KkkMonitoring.Models.Entities
         public decimal Latitude { get; set; }
 
         public virtual ICollection<ParameterValue> Parameters { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var stationObj = obj as Station;
+
+            return stationObj?.StationId == this.StationId;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.StationId.GetHashCode();
+        }
     }
 }

@@ -11,6 +11,7 @@ using System.Web;
 using KkkMonitoring.Models.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.SignalR;
 
 namespace KkkMonitoring.Models.Entities
 {

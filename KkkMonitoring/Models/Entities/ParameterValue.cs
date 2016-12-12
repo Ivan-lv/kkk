@@ -19,7 +19,7 @@ namespace KkkMonitoring.Models.Entities
 
         public Station Station { get; set; }
 
-        private string ValueDb { get; set; }
+        public string ValueDb { get; set; }
 
         [NotMapped]
         public string Value
@@ -31,10 +31,10 @@ namespace KkkMonitoring.Models.Entities
 
             set
             {
-                Type type = ParameterSetting.TypeBinding[Setting.DataType];
+                Type type = GetType();
                 if (TypesHelper.IsCorrect(value, type))
                 {
-                    this.ValueDb = value;
+                    this.ValueDb = TypesHelper.CastToType(value, type).ToString();
                 }
                 else
                 {
@@ -42,6 +42,12 @@ namespace KkkMonitoring.Models.Entities
                 }
             }
         }
+
+        [NotMapped]
+        public Object ParsedObject => TypesHelper.CastToType(ValueDb, GetType());
+
+        [NotMapped]
+        public Type GetCsType => ParameterSetting.TypeBinding[Setting.DataType];
 
         public class ParameterValueConfiguration : EntityTypeConfiguration<ParameterValue>
         {
