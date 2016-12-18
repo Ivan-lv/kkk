@@ -31,10 +31,10 @@ namespace KkkMonitoring.Models.Entities
 
             set
             {
-                Type type = GetType();
+                var type = CsType;
                 if (TypesHelper.IsCorrect(value, type))
                 {
-                    this.ValueDb = TypesHelper.CastToType(value, type).ToString();
+                    this.ValueDb = TypesHelper.CastToType(value, type)?.ToString();
                 }
                 else
                 {
@@ -47,7 +47,7 @@ namespace KkkMonitoring.Models.Entities
         public Object ParsedObject => TypesHelper.CastToType(ValueDb, GetType());
 
         [NotMapped]
-        public Type GetCsType => ParameterSetting.TypeBinding[Setting.DataType];
+        public Type CsType => ParameterSetting.TypeBinding[Setting.DataType];
 
         public class ParameterValueConfiguration : EntityTypeConfiguration<ParameterValue>
         {
