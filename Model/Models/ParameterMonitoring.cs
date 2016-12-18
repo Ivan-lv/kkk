@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Timers;
-using System.Web;
-using KkkMonitoring.Models.Entities;
-using KkkMonitoring.Models.Utils;
+using Model.Entities;
+using Model.Utils;
 
-namespace KkkMonitoring.Models.Models
+namespace Model.Models
 {
     public class ParameterMonitoring : DbContext
     {

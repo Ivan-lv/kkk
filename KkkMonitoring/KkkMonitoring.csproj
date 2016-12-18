@@ -371,6 +371,7 @@
     <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\MasterPages\LoginMasterPage.cshtml" />
     <Content Include="Views\Stations\StationList.cshtml" />
+    <Content Include="Views\Elements\ElementList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -385,6 +386,12 @@
     <Folder Include="Scripts\libs\bootstrap-table\extensions\" />
     <Folder Include="Scripts\libs\bootstrap-table\locale\" />
     <Folder Include="Views\ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{1f7d19a4-5074-4508-9c40-b3ede2554cad}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
