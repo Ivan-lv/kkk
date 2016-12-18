@@ -22,6 +22,8 @@ namespace Model.Entities
 
         public virtual ICollection<ParameterValue> Parameters { get; set; }
 
+        public virtual ICollection<Element> Elements { get; set; } 
+
         public override bool Equals(object obj)
         {
             var stationObj = obj as Station;

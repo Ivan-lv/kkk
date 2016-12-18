@@ -42,6 +42,8 @@ namespace Model.Entities
         [Required]
         public virtual string Name { get; set; }
 
+        public virtual string Comment { get; set; }
+
         /// <summary>
         /// Тип данных параметра.
         /// </summary>

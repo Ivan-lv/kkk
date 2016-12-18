@@ -337,18 +337,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\Element.cs" />
-    <Compile Include="Models\Entities\ElementSetting.cs" />
-    <Compile Include="Models\Entities\ParameterSetting.cs" />
-    <Compile Include="Models\Entities\ParameterValue.cs" />
-    <Compile Include="Models\Entities\Station.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="App_Start\ApplicationUserManager.cs" />
     <Compile Include="Models\Models\ApplicationUserModel.cs" />
-    <Compile Include="Models\Models\GeneralModel.cs" />
-    <Compile Include="Models\Models\Model.cs" />
-    <Compile Include="Models\Models\ParameterMonitoring.cs" />
-    <Compile Include="Models\Models\StationModel.cs" />
     <Compile Include="Models\Utils\TypesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

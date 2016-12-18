@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using KkkMonitoring.Models.Entities;
+using Model.Entities;
 
 namespace KkkMonitoring.Models.Utils
 {

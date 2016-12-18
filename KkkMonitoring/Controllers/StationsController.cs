@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using KkkMonitoring.Models.Entities;
 using KkkMonitoring.Models.Models;
+using Model.Entities;
+using Model.Models;
 using Newtonsoft.Json;
 using WebGrease.Css.Extensions;
 

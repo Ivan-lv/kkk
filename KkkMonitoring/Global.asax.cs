@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 using KkkMonitoring.Models.Models;
+using Model.Models;
 
 namespace KkkMonitoring
 {
@@ -15,9 +16,8 @@ namespace KkkMonitoring
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ParameterMonitoring>());
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationUserModel>());
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<StationModel>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<StationModel>());
         }
     }
 }

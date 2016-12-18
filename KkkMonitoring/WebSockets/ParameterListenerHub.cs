@@ -8,6 +8,7 @@ using System.Web.Helpers;
 using KkkMonitoring.Models.Models;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using Model.Models;
 using Newtonsoft.Json;
 using WebGrease.Css.Extensions;
 
