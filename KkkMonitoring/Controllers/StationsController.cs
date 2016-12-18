@@ -104,7 +104,8 @@ namespace KkkMonitoring.Controllers
                 {
                     param.Setting.Name,
                     param.Setting.DataType,
-                    param.ParameterId
+                    param.ParameterId,
+                    param.ValueDb
                 }),
                 //TODO: добавить параметры типовых элементов установки
             }).First();
@@ -115,7 +116,8 @@ namespace KkkMonitoring.Controllers
                 {
                     datatype = x.DataType.ToString(),
                     name = x.Name,
-                    parameterId = x.ParameterId
+                    parameterId = x.ParameterId,
+                    value = x.ValueDb
                 })
             };
             

@@ -13,8 +13,13 @@
         }
 
         $CardContainer.find("h4").on("click", hideCard);
-
+        parameterSocket.startListen(onValueChange);
     });
+
+    function onValueChange(stationId, elementId, paramId, value) {
+        var paramValue = $CardContainer.find("#" + paramId + " .value-field");
+        paramValue.text(value);
+    }
 
 
     /**
@@ -30,9 +35,9 @@
             var parametersTableBody = $CardContainer.find("table.parameters tbody");
             parametersTableBody.empty();
             $.map(stationInfo.parameters, function (parameter) {
-                $("<tr></tr>")
+                $("<tr></tr>").attr( "id", parameter.parameterId)
                     .append($("<td>" + (parameter.name || "") + "</td>"))
-                    .append($("<td>" + (parameter.value || "") + "</td>"))
+                    .append($("<td>" + (parameter.value || "") + "</td>").attr("class", "value-field"))
                     .appendTo(parametersTableBody);
             });
         }
@@ -59,14 +64,12 @@
      * @returns undefined 
      */
     function hideCard() {
+        parameterSocket.unsubscribe();
         if (!$CardContainer || !$CardContainer.length) {
             return;
         }
-
         $CardContainer.fadeOut();
     }
-
-
 
     /**
      * Загружает данные для карточки станции
@@ -84,6 +87,7 @@
 
         API.getStation(stationId).then(function(stationInfo) {
             _setDataIntoCard(stationInfo);
+            parameterSocket.subscribe(stationId);
             showCard();
         });
 

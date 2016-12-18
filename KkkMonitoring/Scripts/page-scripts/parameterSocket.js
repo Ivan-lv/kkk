@@ -1,23 +1,32 @@
 ﻿var parameterSocket =
 {
-    hub : undefined,
+    hub: undefined,
     server: undefined,
     client: undefined,
+    currentStation: undefined,
 
-    init : (function($) {
+    init: (function($) {
         debugger;
         this.hub = $.connection.ParameterListenerHub;
         this.server = hub.server;
         this.client = hub.client;
-        $.connection.hub.start();
+
     })(jQuery),
 
-    subscribe: function(stationId, callback) {
-        server.SubscribeOnStation(stationId);
-        client.GetParameter = callback;
+    startListen: function(callback) {
+        hub.client.getParameter = callback;
+        $.connection.hub.start()
+            .done(function () { console.log('SignalR connected with id' + $.connection.hub.id); })
+            .fail(function () { console.log('Achtung!'); });
     },
 
-    unsubscribe: function(stationId) {
-        server.UnsubscribeFromStation(stationId);
+    subscribe: function(stationId) {
+        server.SubscribeOnStation(stationId);
+        currentStation = stationId;
+    },
+
+    unsubscribe: function (stationId) {
+        var id = stationId == undefined ? currentStation : stationId;
+        server.UnsubscribeFromStation(id);
     }
 }

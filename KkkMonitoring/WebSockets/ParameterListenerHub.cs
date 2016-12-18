@@ -23,7 +23,7 @@ namespace KkkMonitoring
     public class ParameterListenerHub : Hub<IClient>
     {
         //HashSet запасен на будущее
-        Dictionary<string, HashSet<string>> usersStations = new Dictionary<string, HashSet<string>>();
+        static Dictionary<string, HashSet<string>> usersStations = new Dictionary<string, HashSet<string>>();
 
         private class OperationResult
         {
@@ -96,6 +96,7 @@ namespace KkkMonitoring
 
         public override System.Threading.Tasks.Task OnDisconnected(bool stopCalled)
         {
+            return base.OnDisconnected(stopCalled);
             var userId = Context.Request.User.Identity.Name;
             usersStations.ForEach(x =>
             {

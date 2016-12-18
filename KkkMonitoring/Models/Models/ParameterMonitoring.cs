@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Web;
 using KkkMonitoring.Models.Entities;
 using KkkMonitoring.Models.Utils;
@@ -15,7 +15,8 @@ namespace KkkMonitoring.Models.Models
     {
         private int delay = 5000;
         private bool shouldWork = false;
-        private Task monitorTask;
+        private Timer timer;
+
 
         #region Реализация Singleton
         private static readonly Lazy<ParameterMonitoring> lazyInit = 
@@ -25,33 +26,18 @@ namespace KkkMonitoring.Models.Models
 
         private ParameterMonitoring() : base("ConnStr")
         {
+            shouldWork = true;
+            timer = new Timer(delay);
+            timer.Elapsed += (sender, args) => Monitor();
+
+            timer.AutoReset = true;
+            timer.Enabled = true;
+            timer.Start();
         }
 
         ~ParameterMonitoring()
         {
-            StopMonitor();
-        }
-
-        public async Task StartMonitor()
-        {
-            shouldWork = true;
-
-            while (shouldWork)
-            {
-                monitorTask = Task.Run(() =>
-                {
-                    Monitor();
-                });
-                Console.WriteLine(DateTime.Now.ToString() + " hey!");
-                await Task.Delay(delay);
-                monitorTask.Wait();
-            }
-        }
-
-        public void StopMonitor()
-        {
-            shouldWork = false;
-            monitorTask.Wait();
+            timer.Stop();
         }
 
         public static ParameterMonitoring GetMonitorInstance => lazyInit.Value;
@@ -122,6 +108,9 @@ namespace KkkMonitoring.Models.Models
 
         private void Monitor()
         {
+            if (trackingParams.Count == 0)
+                return;
+
             var paramsToMonitor = trackingParams.Select(x => x.ParamId).ToArray();
             var parameters = Values.Where(x => paramsToMonitor.Contains(x.ParameterId)).AsNoTracking().ToList();
             foreach (var parameter in parameters)
@@ -163,11 +152,6 @@ namespace KkkMonitoring.Models.Models
                     trackingParams.Add(monVal);
                 }
             }
-
-            if (trackingParams.Count != 0 && !shouldWork)
-            {
-                StartMonitor();
-            }
         }
 
         public void AddStation(Station station)
@@ -183,11 +167,6 @@ namespace KkkMonitoring.Models.Models
             var stationParams =
                 Values.Where(x => x.Station.StationId == stationGuid).Select(x => x.ParameterId);
             trackingParams.RemoveAll(x => stationParams.Contains(x.StationId));
-
-            if (trackingParams.Count == 0)
-            {
-                StopMonitor();
-            }
         }
 
         public void RemoveStation(Station station)
